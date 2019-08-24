@@ -1,0 +1,3 @@
+[submodule "3rdparty/boost-cmake"]
+	path = 3rdparty/boost-cmake
+	url = git://github.com/asheplyakov/boost-cmake.git
