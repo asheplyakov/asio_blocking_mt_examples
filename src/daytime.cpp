@@ -5,7 +5,11 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#if defined(_WIN32) && defined(__GNUC__)
+#include <mingw.thread.h>
+#else
 #include <thread>
+#endif
 
 using boost::asio::ip::tcp;
 
@@ -24,7 +28,11 @@ int main(int argc, char** argv) {
         [](tcp::socket sock) {
           char buf[32];
           time_t now = time(0);
+#ifndef _WIN32
           ctime_r(&now, buf);
+#else
+          ctime_s(buf, sizeof(buf), &now);
+#endif
           boost::asio::write(sock, boost::asio::buffer(buf, strlen(buf) + 1));
           log("connection from", sock);
         },

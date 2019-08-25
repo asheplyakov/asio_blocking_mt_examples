@@ -1,7 +1,11 @@
 #include <cstdlib>
 #include <boost/asio.hpp>
 #include <iostream>
+#if defined(_WIN32) && defined(__GNUC__)
+#include <mingw.thread.h>
+#else
 #include <thread>
+#endif
 #include <utility>
 
 using boost::asio::ip::tcp;

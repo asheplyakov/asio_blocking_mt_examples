@@ -1,11 +1,17 @@
 #ifndef ASIO_SAMPLES_SYNC_THREADED_TCP_SERVER_HPP
 #define ASIO_SAMPLES_SYNC_THREADED_TCP_SERVER_HPP
-#include <condition_variable>
 #include <cstdlib>
 #include <atomic>
 #include <boost/asio.hpp>
+#if defined(_WIN32) && defined(__GNUC__)
+#include <mingw.condition_variable.h>
+#include <mingw.mutex.h>
+#include <mingw.thread.h>
+#else
+#include <condition_variable>
 #include <mutex>
 #include <thread>
+#endif
 #include <utility>
 
 using tcp = boost::asio::ip::tcp;
