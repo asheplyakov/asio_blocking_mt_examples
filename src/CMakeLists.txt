@@ -1,7 +1,7 @@
 
 add_executable(echoserver echoserver.cpp)
 target_link_libraries(echoserver
-    PRIVATE Boost::boost Boost::system Threads::Threads
+    PRIVATE Boost::asio Threads::Threads
 )
 set_target_properties(echoserver PROPERTIES
     CXX_STANDARD 11
@@ -10,7 +10,7 @@ set_target_properties(echoserver PROPERTIES
 
 add_executable(daytime daytime.cpp)
 target_link_libraries(daytime
-    PRIVATE Boost::boost Boost::system Threads::Threads
+    PRIVATE Boost::asio Threads::Threads
 )
 set_target_properties(daytime PROPERTIES
     CXX_STANDARD 11
@@ -22,7 +22,7 @@ add_executable(echoserver_limiting
     syncthreadedtcpserver.hpp
 )
 target_link_libraries(echoserver_limiting
-    PRIVATE Boost::boost Boost::system Threads::Threads
+    PRIVATE Boost::asio Threads::Threads
 )
 set_target_properties(echoserver_limiting PROPERTIES
     CXX_STANDARD 14
