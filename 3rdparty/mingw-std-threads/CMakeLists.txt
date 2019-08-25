@@ -1,0 +1,6 @@
+add_library(MinGW::Threads INTERFACE IMPORTED GLOBAL)
+if (WIN32)
+  find_package(Threads REQUIRED)
+  target_link_libraries(MinGW::Threads INTERFACE Threads::Threads)
+  target_include_directories(MinGW::Threads INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/mingw-std-threads)
+endif()
