@@ -17,3 +17,14 @@ set_target_properties(daytime PROPERTIES
     CXX_STANDARD_REQUIRED ON
 )
 
+add_executable(echoserver_limiting
+    echoserver_limiting.cpp
+    syncthreadedtcpserver.hpp
+)
+target_link_libraries(echoserver_limiting
+    PRIVATE Boost::boost Boost::system Threads::Threads
+)
+set_target_properties(echoserver_limiting PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
